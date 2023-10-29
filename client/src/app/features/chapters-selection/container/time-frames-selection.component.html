@@ -1,0 +1,104 @@
+<div *ngIf="(countedTimeFrame | availableTimeFrames) as availableTimeFrames" fxLayout="column"
+     class="time-frames-selection-container">
+    <div fxLayout="row wrap" fxLayoutAlign="center stretch">
+        <div fxFlex.gt-sm="50%" fxFlex.lt-md="100%" fxLayoutAlign="center center"
+             [ngSwitch]="selectionStage">
+            <ng-container *ngSwitchCase="'SELECTION'">
+                <ng-container [ngTemplateOutlet]="timeFrameSelection"
+                              [ngTemplateOutletContext]="{ availableTimeFrames: availableTimeFrames }"></ng-container>
+            </ng-container>
+
+            <ng-container *ngSwitchCase="'STAGED'">
+                <ng-container [ngTemplateOutlet]="selectionApproval"
+                              [ngTemplateOutletContext]="{ availableTimeFrames: availableTimeFrames }"></ng-container>
+            </ng-container>
+        </div>
+
+        <div fxFlex.gt-sm="50%" fxFlex.lt-md="100%" fxLayoutAlign="center center">
+            <standard-lottie src="/assets/lotties/read.json"></standard-lottie>
+        </div>
+    </div>
+
+    <div fxLayout="row wrap" fxLayoutAlign="center center"
+         class="time-frames-cards" [ngSwitch]="selectionStage">
+        <ng-container *ngSwitchCase="'SELECTION'" [ngTemplateOutlet]="selectTimeFrames"
+                      [ngTemplateOutletContext]="{ timeFrames: availableTimeFrames, allowSelection: true }"
+        ></ng-container>
+
+        <ng-container *ngSwitchCase="'STAGED'" [ngTemplateOutlet]="selectTimeFrames"
+                      [ngTemplateOutletContext]="{ timeFrames: pick(countedTimeFrame, arrayFrom(selectedTimeFramesIds)), allowSelection: false }"
+        ></ng-container>
+    </div>
+
+    <div fxLayout="row wrap" fxLayoutAlign="center center" class="time-frames-selection-buttons">
+        <button mat-flat-button class="action-button" [class.disabled]="selectedTimeFramesIds.size === 0"
+                fxFlex.lt-md="100" fxFlex.gt-sm="23" fxLayoutAlign="center center"
+                hover hoverClass="mat-elevation-z5"
+                (click)="selectionStage === 'SELECTION' ? selectionStage = 'STAGED' : approveTimeFramesSelection()">
+            <ng-container *ngIf="selectionStage === 'SELECTION'">
+                <i class="bi bi-bookmark-heart-fill"></i>
+                {{'group.view.joinButtonLabel' | translate}}
+            </ng-container>
+
+            <ng-container *ngIf="selectionStage === 'STAGED'">
+                <i class="bi bi-bookmark-check-fill"></i>
+                {{'group.view.select.confirmSelection.buttonLabel' | translate}}
+            </ng-container>
+        </button>
+
+        <button mat-flat-button class="action-button" hover hoverClass="mat-elevation-z5"
+                fxFlex.lt-md="100" fxFlex.gt-sm="23" fxLayoutAlign="center center"
+                (click)="selectionStage === 'SELECTION' ? cancel.emit() : selectionStage = 'SELECTION'">
+            <i class="bi bi-arrow-left"></i>
+            {{'group.view.select.backButtonLabel' | translate}}
+        </button>
+    </div>
+</div>
+
+
+<ng-template #timeFrameSelection let-availableTimeFrames="availableTimeFrames">
+    <div class="flex flex-col">
+        <div class="text-section">
+            <span>{{'group.view.select.title' | translate}} ({{ availableTimeFrames[0].selectionCount + 1 }})</span>
+
+            <p>{{'group.view.select.description' | translate}}</p>
+            <p class="note">*{{'group.view.select.hint' | translate}}</p>
+        </div>
+
+        <mat-form-field appearance="fill">
+            <mat-label>{{'group.view.select.nameField.label' | translate}}</mat-label>
+            <mat-hint>{{'group.view.select.nameField.hint' | translate}}</mat-hint>
+            <input matInput type="text" maxlength="20" autocomplete="off" [(ngModel)]="username">
+            <i matSuffix class="bi bi-person-circle"></i>
+        </mat-form-field>
+    </div>
+</ng-template>
+
+<ng-template #selectionApproval let-availableTimeFrames="availableTimeFrames">
+    <div class="text-section">
+        <span>{{'group.view.select.title' | translate}} ({{ availableTimeFrames[0].selectionCount + 1 }})</span>
+
+        <p>{{'group.view.select.confirmSelection.description' | translate}}</p>
+    </div>
+</ng-template>
+
+<ng-template #selectTimeFrames let-timeFrames="timeFrames"
+             let-allowSelection="allowSelection">
+    <mat-card *ngFor="let timeFrame of timeFrames"
+              class="read-segment-card"
+              [class.selected]="isTimeFrameSelected(timeFrame)"
+              fxFlex.xs="100" fxFlex.gt-xs="46" fxFlex.gt-sm="23"
+              hover [hoverClass]="allowSelection && 'mat-elevation-z5'"
+              (click)="allowSelection && toggleTimeFrameSelection(timeFrame)">
+
+        <i *ngIf="isTimeFrameSelected(timeFrame)" [styleByLang]="{he: 'right', en: 'left'}"
+           class="bi bi-check-circle"></i>
+
+        <p *ngIf="timeFrame.title">{{timeFrame.title | translate}}</p>
+        <span>
+            {{ timeFrame.startTime >= 10 ?  timeFrame.startTime : '0' + timeFrame.startTime }}:00
+            -
+            {{ timeFrame.endTime >= 10 ?  timeFrame.endTime : '0' + timeFrame.endTime }}:00
+    </span>
+    </mat-card>
+</ng-template>

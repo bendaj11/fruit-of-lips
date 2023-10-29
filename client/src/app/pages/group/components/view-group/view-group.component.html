@@ -1,0 +1,78 @@
+<ng-container *ngIf="(group$ | async) | detailedGroup as detailedGroup;">
+    <div class="sticky-header group-header"
+         fxLayoutGap.gt-xs="0" fxLayoutGap.xs="20px"
+         fxLayout.gt-xs="row wrap" fxLayout.xs="column"
+         fxLayoutAlign="space-between strech"
+         langDirection>
+        <div class="text-section title" fxFlex.xs="100" fxFlex.gt-xs="50">
+            <span>{{detailedGroup.group.title}}</span>
+        </div>
+
+        <div fxLayoutAlign="end center" fxFlex.xs="100" fxFlex.gt-xs="50" *ngIf="!showAvailableTimeFrameSelection">
+            <button mat-flat-button class="join-button" hover hoverClass="mat-elevation-z5"
+                    (click)="showAvailableTimeFramesSelectionWindow()" fxFlex.xs="100">
+                <i class="bi bi-bookmark-heart-fill"></i>
+                {{'group.view.joinButtonLabel' | translate}}
+            </button>
+        </div>
+    </div>
+
+    <div class="component-wrapper flex flex-col" langDirection>
+        <ng-container *ngIf="!showAvailableTimeFrameSelection">
+            <div fxLayout="row wrap" fxLayoutAlign="space-between strech" class="group-description flex-center">
+                <mat-card class="group-setting" fxFlex.xs="100" fxFlex.gt-xs="47" fxFlex.gt-sm="32">
+                    <i class="bi bi-file-person-fill"></i>
+                    <span class="label">{{'system.designationsLabel' | translate}}</span>
+
+                    <ng-container *ngIf="detailedGroup.group.designations.length > 0 else noDesignations">
+                        <span *ngFor="let designation of detailedGroup.group.designations">{{designation}}
+                            <br></span>
+                    </ng-container>
+
+                    <ng-template #noDesignations>
+                        <span>{{'system.noDesignationsMessage' | translate}}</span>
+                    </ng-template>
+                </mat-card>
+
+                <mat-card class="group-setting" fxFlex.xs="100" fxFlex.gt-xs="47" fxFlex.gt-sm="32">
+                    <i class="bi bi-calendar-fill">
+                        <span>{{detailedGroup.group.updatedAt | date: 'dd'}}</span>
+                    </i>
+                    <span class="label">{{'system.updatedAtLabel' | translate}}</span>
+                    <span>{{detailedGroup.group.updatedAt | date:'dd/MM/yyyy HH:mm'}}</span>
+                </mat-card>
+
+                <mat-card class="group-setting" fxFlex.xs="100" fxFlex.gt-xs="47" fxFlex.gt-sm="32">
+                    <i class="bi bi-calendar-event-fill"></i>
+                    <span class="label">
+                        {{((detailedGroup.group.expirationDate | isExpired) ? 'system.expirationDatePassedLabel' : 'system.expirationDateLabel') | translate}}
+                    </span>
+                    <span>{{detailedGroup.group.expirationDate | date:'dd/MM/yyyy HH:mm'}}</span>
+                </mat-card>
+            </div>
+
+            <ng-container *ngIf="values(detailedGroup.group.selectedTimeFrames) | groupToShifts; let shifts">
+                <div fxLayout="row wrap" fxLayoutAlign="center strech" class="group-status flex-center"
+                     *ngIf="shifts.length > 0">
+                    <div class="text-section" fxFlex="100">
+                        <span>{{'group.view.summery.title' | translate}}</span>
+                        <p>{{'group.view.summery.description' | translate}}</p>
+                    </div>
+
+                    <shift-card *ngFor="let shift of shifts; let index = index; trackBy: trackByIndex"
+                               [shift]="shift"
+                               [title]="('system.shift' | translate) + ' ' + (index + 1)"
+                               fxFlex.xs="100" fxFlex.gt-xs="47" fxFlex.gt-sm="32">
+
+                    </shift-card>
+                </div>
+            </ng-container>
+        </ng-container>
+
+        <time-frames-selection *ngIf="showAvailableTimeFrameSelection"
+                               [countedTimeFrame]="detailedGroup.group.selectedTimeFrames" langDirection
+                               (timeFramesSelected)="updateSelectedTimeFrames($event, detailedGroup)"
+                               (cancel)="showAvailableTimeFrameSelection = false"
+        ></time-frames-selection>
+    </div>
+</ng-container>

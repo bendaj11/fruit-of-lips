@@ -1,0 +1,99 @@
+{
+  "system": {
+    "soon": "Soon",
+    "shift": "Shift",
+    "anonymous": "Anonymous",
+    "available": "Available",
+    "name": "FRUIT OF LIPS",
+    "submit": "Save",
+    "noDesignationsMessage": "No designations were added",
+    "designationsLabel": "Designations",
+    "expirationDateLabel": "Expires On",
+    "expirationDatePassedLabel": "Expired On",
+    "updatedAtLabel": "Last updated",
+    "totalHoursCountLabel": "Slander free hours",
+    "totalParticipantsCountLabel": "Participants"
+  },
+  "home": {
+    "title": "HOME",
+    "about": {
+      "header": "OUR GOAL",
+      "description": "This website was developed in order for you to bless help others to keep clear of slander an defamation. Beyond user experience which we have kept in mind throughout the development process, we wanted to give you full control over your experience. You can add designations or expiration dste to your groups and many other options. We hope you'll enjoy and make the best out of what we offer."
+    },
+    "preview": {
+      "header": "YOUR OPTIONS",
+      "description": "We've put together some of the main capabilities you can access. For more options and further introduction feel free to view all you can achieve by using the navigation bar fixed to the top of the page."
+    }
+  },
+  "search": {
+    "title": "SEARCH",
+    "description": "Here you can search through all existing groups and join them. You can search by title, date or designation",
+    "barLabel": "Search for a group by title, date or designation",
+    "emptyGroupsLabel": "There are currently no open groups",
+    "emptySearchResultsLabel": "No groups could be found for"
+  },
+  "group": {
+    "create": {
+      "title": "CREATE",
+      "description": "Here you can create a new group. You can add designations or comments for future participants, desired expiration dste and much more customizations",
+      "form": {
+        "title": {
+          "label": "Group Title",
+          "hint": "Give a title to your group so other people can find it without the link",
+          "requiredError": "Reading Title must be provided",
+          "maxLengthError": "Reading Title can contain only up to 50 characters"
+        },
+        "expirationDate": {
+          "label": "Reading Expiration Date",
+          "hint": "You can give an expiration date to your group. Defaults to 30 days",
+          "invalidDateError": "Expiration Date must be bigger than today",
+          "invalidDateFormatError": "Expiration Date must be in date format"
+        },
+        "designations": {
+          "label": "Designations",
+          "hint": "You can add designations to your group (In memory of, health, success etc.)",
+          "maxLengthError": "Designation can contain only up to 50 characters"
+        },
+        "email": {
+          "label": "Email",
+          "hint": "This email will be used only to send the links for your new group",
+          "invalidEmailError": "Invalid email"
+        }
+      }
+    },
+    "edit": {
+      "title": "EDIT"
+    },
+    "view": {
+      "title": "JOIN",
+      "summery": {
+        "title": "Reading summery",
+        "description": "See all who's taking part in this group, currently available segments and books, all with live updates. Look for a blinking dot indicating the book currently has available segments"
+      },
+      "joinButtonLabel": "I want to join",
+      "select": {
+        "title": "Choose Segments For Current Book",
+        "description": "Select a time frame by clicking on any time frame box you wish to choose, click again to undo selection. Once done, click on the done button below",
+        "hint": "In case you don't see the time frame you wish to select, it has already been selected by someone else for this book, please wait for another shift to be opened and try again",
+        "backButtonLabel": "Back",
+        "nameField": {
+          "label": "Enter your name",
+          "hint": "If you wish your name to appear in the group summery. Max 20 characters"
+        },
+        "confirmSelection": {
+          "buttonLabel": "Confirm selection",
+          "description": "B-h I commit to keep clear from any speaking any slander or defamation in the time frame I've selected"
+        },
+        "success": {
+          "title": "Thank you, Your selection was successfully registered"
+        }
+      }
+    },
+    "notFound": {
+      "title": "Not Fount",
+      "secondaryTitle": "We searched. Really.",
+      "description": "The group requested could not be found. It might have expired and cannot be edited or viewed",
+      "hint": "You can always create a new group using the navigation bar ot by clicking on"
+    }
+  }
+}

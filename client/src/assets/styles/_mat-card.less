@@ -1,0 +1,32 @@
+@import '_variables';
+
+.mat-card {
+  border-radius: 18px;
+
+  &:not([class*=mat-elevation-z]) {
+    box-shadow: 2px 4px 12px rgb(0 0 0 / 8%) !important;
+  }
+
+  &.feature-preview-card {
+    cursor: pointer;
+    transition: .3s;
+
+    &:hover {
+      transform: scale(1.02);
+      box-shadow: 2px 4px 12px rgb(0 0 0 / 4%);
+    }
+
+    mat-card-title {
+      color: @primary-color;
+      font-size: @header-font-size;
+    }
+
+    mat-card-subtitle {
+      font-size: @subtitle-font-size;
+    }
+
+    mat-card-content {
+      font-size: @text-font-size;
+    }
+  }
+}

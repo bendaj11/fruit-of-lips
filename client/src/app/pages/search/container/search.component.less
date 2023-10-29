@@ -1,0 +1,44 @@
+@import '/src/assets/styles/_variables';
+
+.component-wrapper {
+  gap: 30px;
+
+  .search-bar {
+    margin-bottom: -1.34375em;
+    animation: expand 1s ease-in-out forwards;
+
+    @-webkit-keyframes expand {
+      from {
+        width: 0;
+      }
+      to {
+        width: 100%;
+      }
+    }
+
+    @keyframes expand {
+      from {
+        width: 0;
+      }
+      to {
+        width: 100%;
+      }
+    }
+  }
+
+  mat-spinner {
+    margin: auto;
+  }
+
+  .message-with-icon {
+    margin: auto;
+    color: @text-color;
+    animation-delay: 1s;
+    font-size: @text-font-size;
+    padding-bottom: calc(1.34375em + 70px);
+
+    i {
+      font-size: calc(@text-font-size + 30px);
+    }
+  }
+}

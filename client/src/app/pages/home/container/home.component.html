@@ -1,0 +1,46 @@
+<section class="home flex flex-col flex-center full-height full-width">
+    <logo-lottie class="animate__animated animate__zoomIn"></logo-lottie>
+    <span langDirection class="animate__animated animate__fadeInUp animate__fast">{{'system.name' | translate}}</span>
+</section>
+
+<section langDirection class="about" fxLayout="row wrap" fxLayoutAlign="space-evenly center">
+    <div class="text-section" fxFlex.lt-md="100" fxFlex.gt-sm="48" aos animation="fadeInDown">
+        <span>{{'home.about.header' | translate}}</span>
+        <p>{{'home.about.description' | translate}}</p>
+    </div>
+
+    <standard-lottie src="/assets/lotties/about.json" fxFlex.lt-md="100" fxFlex.gt-sm="48" aos
+                     animation="fadeInUp"></standard-lottie>
+</section>
+
+<section class="feature-previews" fxLayout="column">
+    <div class="text-section" aos animation="fadeInDown">
+        <span>{{'home.preview.header' | translate}}</span>
+        <p>{{'home.preview.description' | translate}}</p>
+    </div>
+
+    <div fxLayout="row wrap"
+         class="feature-previews-cards"
+         fxLayoutAlign="center stretch">
+
+        <feature-preview-card class="flex"
+                              fxFlex.lt-md="100"
+                              fxFlex.gt-sm="30"
+                              routerLink="/search"
+                              aos animation="zoomIn">
+            <i class="bi bi-search"></i>
+            <span>{{'search.title' | translate}}</span>
+            <p>{{'search.description' | translate}}</p>
+        </feature-preview-card>
+
+        <feature-preview-card class="flex"
+                              fxFlex.lt-md="100"
+                              fxFlex.gt-sm="30"
+                              routerLink="/reading/create"
+                              aos animation="zoomIn">
+            <i class="bi bi-bookmark-plus"></i>
+            <span>{{'group.create.title' | translate}}</span>
+            <p>{{'group.create.description' | translate}}</p>
+        </feature-preview-card>
+    </div>
+</section>

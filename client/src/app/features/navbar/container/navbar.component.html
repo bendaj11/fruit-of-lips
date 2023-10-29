@@ -1,0 +1,72 @@
+<ng-container *ngrxLet="isNavbarSilent$; let isNavbarSilent">
+    <nav [class.open]="isNavbarOpen" [class.silent]="isNavbarSilent && !isNavbarOpen">
+        <div class="fixed-top-content flex flex-center full-width">
+            <div class="navbar-actions flex flex-center">
+                <language-selector class="flex"></language-selector>
+            </div>
+
+            <img src="/assets/images/logo/logo.png"
+                 class="flex logo"
+                 [class.active]="isNavbarOpen"
+                 [class.closed-navbar-logo]="!isNavbarOpen"
+                 *ngIf="!isNavbarSilent || isNavbarOpen"
+                 (click)="navigateHome()"/>
+
+            <span class="nav-trigger flex flex-col flex-center full-height"
+                  [class.active]="isNavbarOpen"
+                  (click)="isNavbarOpen = !isNavbarOpen">
+        <i></i>
+        <i></i>
+        <i></i>
+      </span>
+        </div>
+
+        <div langDirection class="navbar-links flex flex-center full-width"
+             fxLayout="row wrap"
+             fxLayoutAlign="center center"
+             (click)="isNavbarOpen = false"
+             *ngIf="isNavbarOpen">
+
+            <a class="flex flex-center flex-col animate__animated animate__fadeIn"
+               [style.animationDelay.s]=".3"
+               fxFlex.lt-md="50"
+               fxFlex.gt-sm="25"
+               routerLink="/home"
+               routerLinkActive="active">
+                <i class="bi bi-house"></i>
+                <span>{{ 'home.title' | translate }}</span>
+            </a>
+
+            <a class="flex flex-center flex-col animate__animated animate__fadeIn"
+               [style.animationDelay.s]=".3"
+               fxFlex.lt-md="50"
+               fxFlex.gt-sm="25"
+               routerLink="/search"
+               routerLinkActive="active">
+                <i class="bi bi-search"></i>
+                <span>{{ 'search.title' | translate }}</span>
+            </a>
+
+            <!--<a class="flex flex-center flex-col animate__animated animate__fadeIn"
+               [style.animationDelay.s]=".3"
+               fxFlex.lt-md="50"
+               fxFlex.gt-sm="25"
+               routerLink="/read"
+               routerLinkActive="active">
+              <i class="bi bi-eyeglasses"></i>
+              <span>{{ 'read.title' | translate }}</span>
+            </a>-->
+
+            <a class="flex flex-center flex-col animate__animated animate__fadeIn"
+               [style.animationDelay.s]=".3"
+               fxFlex.lt-md="50"
+               fxFlex.gt-sm="25"
+               routerLink="/reading/create"
+               routerLinkActive="active">
+                <i class="bi bi-bookmark-plus"></i>
+                <span>{{ 'reading.create.title' | translate }}</span>
+            </a>
+
+        </div>
+    </nav>
+</ng-container>

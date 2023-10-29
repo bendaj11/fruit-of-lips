@@ -1,0 +1,34 @@
+@import '/src/assets/styles/_variables';
+
+section {
+  &.home {
+    background: @bright-primary-color;
+
+    logo-lottie {
+      width: 50%;
+      min-width: 250px;
+      max-width: 500px;
+      margin-top: -90px;
+      animation-delay: .5s;
+    }
+
+    span {
+      animation-delay: .8s;
+      font-size: @header-font-size;
+      color: #FFFFFF;
+    }
+  }
+
+  &.about, &.feature-previews {
+    padding: 70px 40px;
+  }
+
+  &.feature-previews {
+    gap: 50px;
+    text-align: center;
+
+    .feature-previews-cards {
+      gap: 40px;
+    }
+  }
+}

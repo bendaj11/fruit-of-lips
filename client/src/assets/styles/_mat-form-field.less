@@ -1,0 +1,27 @@
+@import '_variables';
+
+mat-form-field {
+  .mat-form-field-underline, .mat-form-field-ripple  {
+    opacity: 0;
+    transition: .2s;
+  }
+
+  &.mat-focused {
+    .mat-form-field-suffix, .mat-form-field-label {
+      color: @primary-color !important;
+    }
+
+    .mat-form-field-underline, .mat-form-field-ripple  {
+      opacity: 1;
+      background-color: @primary-color !important;
+    }
+  }
+
+  .mat-form-field-suffix {
+    font-size: calc(@text-font-size + 5px);
+  }
+
+  .mat-select-arrow {
+    display: none;
+  }
+}

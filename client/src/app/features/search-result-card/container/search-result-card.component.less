@@ -1,0 +1,81 @@
+@import '/src/assets/styles/_variables';
+
+mat-card {
+  &:not(.disabled):hover {
+    cursor: pointer;
+  }
+
+
+  .adaptive-date-icon {
+    span {
+      color: white;
+      line-height: 1;
+      font-size: 14px;
+      font-weight: 400;
+      background: @text-color;
+      position: absolute;
+      margin: 15px -21px !important;
+      font-style: normal;
+    }
+  }
+
+  i {
+    margin: 0 10px;
+    color: @text-color;
+    font-size: calc(@text-font-size + 10px);
+  }
+
+  &:hover {
+    mat-card-title {
+      .reading-title {
+        i {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  mat-card-title {
+    justify-content: space-between;
+
+    .reading-title {
+      i {
+        opacity: 0;
+        transition: .2s;
+        color: @primary-color;
+        font-size: @text-font-size;
+      }
+    }
+
+    .progress-percentage {
+      margin: 10px;
+      font-size: calc(@text-font-size - 5px);
+
+      mat-progress-spinner {
+        z-index: 2;
+        position: absolute;
+
+        &.background-spinner {
+          z-index: 1;
+          opacity: .2;
+        }
+      }
+    }
+  }
+
+  mat-card-content {
+    gap: 40px 0;
+    margin: 40px 0 !important;
+
+    .group-setting {
+      display: flex;
+      flex-direction: column;
+      font-size: @text-font-size;
+
+      .label {
+        font-weight: bold;
+        color: @primary-color;
+      }
+    }
+  }
+}

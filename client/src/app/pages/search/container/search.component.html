@@ -1,0 +1,35 @@
+<ng-container *ngrxLet="groupsData$; let groupsData;">
+    <div class="component-wrapper full-height" fxLayout="column" fxLayoutAlign="start center" langDirection>
+        <mat-form-field appearance="fill" class="search-bar">
+            <mat-label>{{'search.barLabel' | translate}}</mat-label>
+            <input matInput #searchInput autocomplete="off">
+            <i matSuffix class="bi bi-search"></i>
+        </mat-form-field>
+
+        <mat-spinner diameter="120" *ngIf="groupsData.groupsInitialFetchStatus === 'PENDING'"></mat-spinner>
+
+        <div class="message-with-icon flex flex-center flex-col animate__animated animate__zoomIn"
+             *ngIf="groupsData.groupsInitialFetchStatus === 'DONE' && groupsData.groups.length === 0">
+            <i class="bi bi-bookmark-x-fill"></i>
+            <span>{{'search.emptyGroupsLabel' | translate}}</span>
+        </div>
+
+        <ng-container
+                *ngIf="groupsData.groupsInitialFetchStatus === 'DONE' && groupsData.groups.length > 0">
+            <ng-container *ngrxLet="[groupsData.groups | filterBy: searchInput.value:['title','designations']] as
+      filteredGroups">
+                <ng-container *ngIf="filteredGroups.length > 0">
+                    <search-result-card class="full-width" *ngFor="let group of filteredGroups"
+                                        [detailedGroup]="group | detailedGroup" [searchValue]="searchInput.value">
+                    </search-result-card>
+                </ng-container>
+
+                <div class="message-with-icon flex flex-center flex-col animate__animated animate__zoomIn"
+                     *ngIf="filteredGroups.length === 0">
+                    <i class="bi bi-eye-slash-fill"></i>
+                    <span>{{'search.emptySearchResultsLabel' | translate}} "{{searchInput.value}}"</span>
+                </div>
+            </ng-container>
+        </ng-container>
+    </div>
+</ng-container>

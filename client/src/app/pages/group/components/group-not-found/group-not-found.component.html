@@ -1,0 +1,14 @@
+<div class="component-wrapper full-height" fxLayout="row wrap" fxLayoutAlign="center start" langDirection>
+    <standard-lottie src="/assets/lotties/not-found.json"
+                     fxFlex.xs="100" fxFlex.gt-xs="40" fxFlex.gt-sm="30"></standard-lottie>
+
+    <div fxFlex="100" class="flex flex-col flex-center">
+        <span>{{'group.notFound.secondaryTitle' | translate}}</span>
+        <p>{{'group.notFound.description' | translate}}</p>
+        <p class="hint">
+            *{{'group.notFound.hint' | translate}}
+
+            <i class="bi bi-bookmark-plus-fill" routerLink="/group/create"></i>
+        </p>
+    </div>
+</div>

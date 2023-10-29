@@ -1,0 +1,30 @@
+<mat-card class="full-width full-height" [class.available]="isShiftAvailable">
+    <mat-card-title class="flex flex-center">
+        <span>{{title}}</span>
+        <i class="bi bi-circle-fill animate__animated animate__flash animate__infinite animate__slower"
+           *ngIf="isShiftAvailable"></i>
+    </mat-card-title>
+
+    <mat-card-content>
+        <div class="named-time-frame flex flex-center" *ngFor="let timeFrame of _shift">
+            <div class="details flex flex-col flex-center">
+                <span class="title" *ngIf="timeFrame.title">{{timeFrame.title | translate}}</span>
+                <span>
+                    {{ timeFrame.startTime >= 10 ?  timeFrame.startTime : '0' + timeFrame.startTime }}:00
+                    -
+                    {{ timeFrame.endTime >= 10 ?  timeFrame.endTime : '0' + timeFrame.endTime }}:00
+                </span>
+            </div>
+            <span [class.animate__flash]="isNil(timeFrame.participant)"
+                  class="username animate__animated animate__infinite animate__slower" [ngSwitch]="timeFrame.participant"
+                  [class.available]="isNil(timeFrame.participant)">
+        <ng-container *ngSwitchCase="null">{{'system.available' | translate}}</ng-container>
+        <ng-container *ngSwitchCase="'ANONYMOUS'">{{'system.anonymous' | translate}}</ng-container>
+        <ng-container *ngSwitchDefault>{{ timeFrame.participant}}</ng-container>
+      </span>
+        </div>
+    </mat-card-content>
+</mat-card>
+
+<canvas #confettiCanvas [hidden]="isShiftAvailable"></canvas>
+

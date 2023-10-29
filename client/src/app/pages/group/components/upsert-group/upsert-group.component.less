@@ -1,0 +1,62 @@
+@import '/src/assets/styles/_variables';
+
+.component-wrapper {
+  gap: 40px;
+
+  form {
+    gap: 40px;
+
+    .designations-form-field {
+      gap: 10px;
+
+      & > i {
+        background: #ebebed;
+        padding: 18px 5px;
+        border-radius: 3px;
+        margin-top: -1em;
+        transition: color .3s;
+        font-size: calc(@text-font-size + 5px);
+
+        &:hover {
+          cursor: pointer;
+          color: @primary-color;
+        }
+      }
+    }
+
+    mat-form-field {
+      font-size: @text-font-size;
+
+      .mat-form-field-suffix {
+        color: gray;
+      }
+    }
+  }
+
+  .submit-button {
+    color: #FFFFFF;
+    transition: .2s;
+    padding-bottom: 5px;
+    margin: 0 auto 40px auto;
+    font-size: @text-font-size;
+    background-color: @primary-color;
+
+    i {
+      margin: 0 5px;
+    }
+  }
+}
+
+.adaptive-date-icon {
+  span {
+    color: white;
+    line-height: 1;
+    font-size: 14px;
+    font-weight: 400;
+    background: inherit;
+    position: absolute;
+    font-style: normal;
+    top: calc(50% - 4.5px);
+    left: calc(50% - 6.5px);
+  }
+}

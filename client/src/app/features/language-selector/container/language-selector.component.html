@@ -1,0 +1,19 @@
+<button mat-button #menuTrigger="matMenuTrigger" [matMenuTriggerFor]="menu" class="language-trigger">
+    <ng-container [ngTemplateOutlet]="languageTemplate"
+                  [ngTemplateOutletContext]="{language: translateService.currentLang, minimize: true}"></ng-container>
+</button>
+
+<mat-menu #menu="matMenu" class="languages-menu" [hasBackdrop]="true" [overlapTrigger]="false">
+    <button mat-menu-item class="language-menu-item" *ngFor="let language of getAllLanguages()"
+            (click)="switchLang(language)">
+        <ng-container [ngTemplateOutlet]="languageTemplate"
+                      [ngTemplateOutletContext]="{language: language}"></ng-container>
+    </button>
+</mat-menu>
+
+<ng-template #languageTemplate let-language="language" let-minimize="minimize">
+    <div class="full-width flex flex-row flex-center language-wrapper">
+        <span *ngIf="!minimize">{{language | uppercase }}</span>
+        <img [src]="'/assets/images/lang/'+ language + '-flag.png'" alt="">
+    </div>
+</ng-template>

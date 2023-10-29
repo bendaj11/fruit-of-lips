@@ -1,0 +1,81 @@
+<div class="component-wrapper full-height" fxLayout="row-reverse wrap" fxLayoutAlign="center center" langDirection>
+    <standard-lottie src="/assets/lotties/choose.json" fxFlex.lt-md="100" fxFlex.gt-sm="48"></standard-lottie>
+
+    <form (ngSubmit)="upsertGroup()"
+          *ngIf="!formValidAndSubmitted else loading"
+          fxLayout="row wrap" fxLayoutAlign="space-between center"
+          fxFlex.gt-sm="48"
+          fxFlex.lt-md="100"
+          autocomplete="off"
+          [formGroup]="upsertGroupForm"
+          class="flex flex-col flex-center">
+        <mat-form-field appearance="fill" fxFlex="100">
+            <mat-label>{{'group.create.form.title.label' | translate}}</mat-label>
+            <mat-hint>{{'group.create.form.title.hint' | translate}}</mat-hint>
+            <mat-error
+                    *ngIf="title.hasError('required')">{{'group.create.form.title.requiredError' | translate}}</mat-error>
+            <mat-error
+                    *ngIf="title.hasError('maxlength')">{{'group.create.form.title.maxLengthError' | translate}}</mat-error>
+            <input matInput formControlTrim formControlName="title">
+            <i matSuffix class="bi bi-bookmark-star-fill"></i>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" fxFlex="100">
+            <mat-label>{{'group.create.form.expirationDate.label' | translate}}</mat-label>
+            <mat-hint>{{'group.create.form.expirationDate.hint' | translate}}</mat-hint>
+            <mat-error *ngIf="expirationDate.hasError('invalidDate')">
+                {{'group.create.form.expirationDate.invalidDateError' | translate}}
+            </mat-error>
+            <mat-error *ngIf="expirationDate.hasError('invalidDateFormat')">
+                {{'group.create.form.expirationDate.invalidDateFormatError' | translate}}
+            </mat-error>
+            <input matInput [matDatepicker]="picker" formControlName="expirationDate" readonly (click)="picker.open()">
+            <mat-datepicker #picker [startAt]="today"></mat-datepicker>
+            <i class="bi bi-calendar-fill adaptive-date-icon" matSuffix>
+                <span>{{expirationDate.value | date: 'dd'}}</span>
+            </i>
+        </mat-form-field>
+
+        <div class="designations-form-field full-width" fxLayout="row" fxLayoutAlign="space-between center"
+             *ngFor="let designation of designations.controls; let index = index; last as last">
+            <mat-form-field appearance="fill" [fxFlex]="last ? 90 : 100">
+                <mat-label>{{'group.create.form.designations.label' | translate}}</mat-label>
+                <mat-hint>{{'group.create.form.designations.hint' | translate}}</mat-hint>
+                <mat-error
+                        *ngIf="designation.errors">{{'group.create.form.designations.maxLengthError' | translate}}</mat-error>
+                <input matInput formControlTrim [formControl]="$any(designation)">
+                <i matSuffix class="bi bi-file-person-fill"></i>
+            </mat-form-field>
+
+            <i *ngIf="last"
+               fxFlex="10%"
+               class="bi bi-plus-circle-fill"
+               (click)="addDesignation()"
+               [class.disabled]="areSomeDesignationsNotFilled()"></i>
+        </div>
+
+        <mat-form-field appearance="fill" class="full-width">
+            <mat-label>{{'group.create.form.email.label' | translate}}</mat-label>
+            <mat-hint>{{'group.create.form.email.hint' | translate}}</mat-hint>
+            <mat-error
+                    *ngIf="email.hasError('email')">{{'group.create.form.email.invalidEmailError' | translate}}</mat-error>
+            <mat-error
+                    *ngIf="email.hasError('required')">{{'group.create.form.email.requiredError' | translate}}</mat-error>
+            <input matInput formControlTrim formControlName="email">
+            <i matSuffix class="bi bi-envelope-fill"></i>
+        </mat-form-field>
+
+        <button mat-flat-button class="submit-button" hover [hoverClass]="'mat-elevation-z5'" type="submit"
+                fxFlex.lt-md="70"
+                fxFlex.gt-sm="30">
+            <i class="bi bi-save"></i>
+            {{'system.submit' | translate}}
+        </button>
+    </form>
+
+    <ng-template #loading>
+        <div fxFlex.gt-sm="48" fxFlex.lt-md="100" class="flex flex-center">
+            <mat-spinner diameter="120"></mat-spinner>
+        </div>
+    </ng-template>
+</div>
