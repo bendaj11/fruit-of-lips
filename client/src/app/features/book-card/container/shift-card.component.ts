@@ -51,7 +51,7 @@ export class ShiftCardComponent {
       spread: 50,
       angle: 275,
       origin: { y: -5, x: 0.5 },
-      colors: ["#007AFF", "#31465C"],
+      colors: ["#793FDF", "#A8A8FF"],
     });
   }
 }

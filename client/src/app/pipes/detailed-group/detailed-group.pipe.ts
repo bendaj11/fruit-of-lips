@@ -12,9 +12,10 @@ export class DetailedGroupPipe implements PipeTransform {
       (timeFrame) => timeFrame.selectionCount
     );
 
-    const allParticipantsNames = group.selectedTimeFrames
-      .map((timeFrame) => timeFrame.participantsNames)
-      .flat();
+    const allParticipantsNames =
+      group.selectedTimeFrames
+        ?.map((timeFrame) => timeFrame.participantsNames)
+        .flat() ?? [];
     const [anonymousParticipants, namedParticipants] = partition(
       allParticipantsNames,
       (participantName) => participantName === "ANONYMOUS"

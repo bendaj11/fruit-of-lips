@@ -342,7 +342,7 @@ table, td { color: #000000; } </style>
       <td style="overflow-wrap:break-word;word-break:break-word;padding:10px;font-family:arial,helvetica,sans-serif;" align="left">
         
   <h1 style="margin: 0px; line-height: 140%; text-align: center; word-wrap: break-word; font-weight: normal; font-family: 'Lato',sans-serif; font-size: 22px; color: #31465C">
-    <div>New Reading Opened "${title}"</div>
+    <div>New Group Opened "${title}"</div>
   </h1>
 
       </td>
@@ -379,7 +379,7 @@ table, td { color: #000000; } </style>
   <div style="line-height: 140%; text-align: left; word-wrap: break-word;">
     <p style="font-size: 14px; line-height: 140%; text-align: center;"><span style="color: #000000; font-size: 14px; line-height: 19.6px;"><strong><span style="font-size: 18px; line-height: 25.2px;">Admin Link</span></strong></span></p>
 <p style="font-size: 14px; line-height: 140%; text-align: center;"><span style="color: #007aff; font-size: 14px; line-height: 19.6px;"><strong><span style="font-size: 18px; line-height: 25.2px;">${adminUrl}</span></strong></span></p>
-<p style="font-size: 14px; line-height: 140%; text-align: center;"><span style="color: #000000; line-height: 19.6px; font-size: 14px;"><span style="line-height: 19.6px; font-size: 14px;">This link will allow you to edit some aspects of your reading. Keep this link private!</span></span></p>
+<p style="font-size: 14px; line-height: 140%; text-align: center;"><span style="color: #000000; line-height: 19.6px; font-size: 14px;"><span style="line-height: 19.6px; font-size: 14px;">This link will allow you to edit some aspects of your group. Keep this link private!</span></span></p>
   </div>
 
       </td>
@@ -415,7 +415,7 @@ table, td { color: #000000; } </style>
   <div style="line-height: 140%; text-align: left; word-wrap: break-word;">
     <p style="font-size: 14px; line-height: 140%; text-align: center;"><span style="color: #000000; font-size: 14px; line-height: 19.6px;"><strong><span style="font-size: 18px; line-height: 25.2px;">Share Link</span></strong></span></p>
 <p style="font-size: 14px; line-height: 140%; text-align: center;"><span style="color: #007aff; font-size: 14px; line-height: 19.6px;"><strong><span style="font-size: 18px; line-height: 25.2px;">${viewUrl}</span></strong></span></p>
-<p style="font-size: 14px; line-height: 140%; text-align: center;"><span style="color: #000000; line-height: 19.6px; font-size: 14px;"><span style="line-height: 19.6px; font-size: 14px;">Share this link with others for them to join your reading</span></span></p>
+<p style="font-size: 14px; line-height: 140%; text-align: center;"><span style="color: #000000; line-height: 19.6px; font-size: 14px;"><span style="line-height: 19.6px; font-size: 14px;">Share this link with others for them to join your group</span></span></p>
   </div>
 
       </td>

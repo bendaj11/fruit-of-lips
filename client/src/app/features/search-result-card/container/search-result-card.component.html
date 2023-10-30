@@ -1,9 +1,9 @@
 <mat-card langDirection class="search-result-card"
-          [routerLink]="(detailedGroup.group.expirationDate | isExpired) ? '' : '/reading/view'"
+          [routerLink]="(detailedGroup.group.expirationDate | isExpired) ? '' : '/group/view'"
           [queryParams]="{id:  detailedGroup.group.id}"
           [class.disabled]="(detailedGroup.group.expirationDate | isExpired)">
     <mat-card-title fxLayout="row">
-        <div class="reading-title">
+        <div class="group-title">
             <span [innerHTML]="detailedGroup.group.title | highlight: searchValue"></span>
             <i class="bi bi-box-arrow-up-right"></i>
         </div>

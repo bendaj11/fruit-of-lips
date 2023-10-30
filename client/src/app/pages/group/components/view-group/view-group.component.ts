@@ -8,7 +8,7 @@ import {
   DetailedGroup,
   Group,
 } from "../../../../../assets/models/group.model";
-import { TimeFramesSelectedEvent } from "../../../../features/chapters-selection/container/time-frames-selection.component";
+import { TimeFramesSelectedEvent } from "../../../../features/time-frames-selection/container/time-frames-selection.component";
 import { updateSelectedTimeFrames } from "../../actions/group.actions";
 import { selectGroupById } from "../../reducer/group.reducer";
 

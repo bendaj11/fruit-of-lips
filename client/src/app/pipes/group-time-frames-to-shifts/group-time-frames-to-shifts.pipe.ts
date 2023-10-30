@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from "@angular/core";
-import { map, maxBy, pick, range, sortBy } from "lodash";
+import { isNil, map, maxBy, pick, range, sortBy } from "lodash";
 import {
   CountedTimeFrame,
   Shift,
@@ -7,19 +7,26 @@ import {
 } from "../../../assets/models/group.model";
 
 @Pipe({
-  name: "groupToShifts",
+  name: "timeFramesToShifts",
 })
-export class GroupToShiftsPipe implements PipeTransform {
+export class TimeFramesToShiftsPipe implements PipeTransform {
   transform(countedTimeFrames: CountedTimeFrame[]) {
-    const largestTimeFrameSelectCount = maxBy(
+    const mostCountedTimeFrame = maxBy(
       countedTimeFrames,
       (countedTimeFrame) => countedTimeFrame.selectionCount
-    ).selectionCount;
+    )?.selectionCount;
 
-    const shits: Shift[] = range(0, largestTimeFrameSelectCount).map<Shift>(
+    if (isNil(mostCountedTimeFrame)) {
+      return [];
+    }
+
+    const shits: Shift[] = range(0, mostCountedTimeFrame).map<Shift>(
       (shiftNumber) =>
         countedTimeFrames.map((countedTimeFrame) =>
-          GroupToShiftsPipe.createNamedTimeFrame(countedTimeFrame, shiftNumber)
+          TimeFramesToShiftsPipe.createNamedTimeFrame(
+            countedTimeFrame,
+            shiftNumber
+          )
         )
     );
 

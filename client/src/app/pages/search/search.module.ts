@@ -13,7 +13,7 @@ import { TranslateModule } from "@ngx-translate/core";
 import { LanguageDirectionModule } from "../../directives/language-direction/language-direction.module";
 import { SearchResultCardModule } from "../../features/search-result-card/search-result-card.module";
 import { GraphQLModule } from "../../graphql.module";
-import { DetailedReadingModule } from "../../pipes/detailed-reading/detailed-reading.module";
+import { DetailedGroupModule } from "../../pipes/detailed-group/detailed-group.module";
 import { FilterByModule } from "../../pipes/filter-by/filter-by.module";
 import { HighlightModule } from "../../pipes/highlight/highlight.module";
 import { SearchComponent } from "./container/search.component";
@@ -32,7 +32,7 @@ import { SearchComponent } from "./container/search.component";
     HighlightModule,
     TranslateModule,
     MatFormFieldModule,
-    DetailedReadingModule,
+    DetailedGroupModule,
     SearchResultCardModule,
     LanguageDirectionModule,
     ReactiveComponentModule,

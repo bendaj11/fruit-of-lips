@@ -1,6 +1,6 @@
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
-import { DetailedGroupPipe } from "./detailed-reading.pipe";
+import { DetailedGroupPipe } from "./detailed-group.pipe";
 
 @NgModule({
   declarations: [DetailedGroupPipe],
@@ -8,4 +8,4 @@ import { DetailedGroupPipe } from "./detailed-reading.pipe";
   providers: [DetailedGroupPipe],
   exports: [DetailedGroupPipe],
 })
-export class DetailedReadingModule {}
+export class DetailedGroupModule {}

@@ -19,14 +19,14 @@ import { TranslateModule } from "@ngx-translate/core";
 import { HoverDirectiveModule } from "../../directives/hover/hover-directive.module";
 import { LanguageDirectionModule } from "../../directives/language-direction/language-direction.module";
 import { ShiftCardModule } from "../../features/book-card/shift-card.module";
-import { ReadSegmentsSelectionModule } from "../../features/chapters-selection/read-segments-selection.module";
+import { TimeFramesSelectionModule } from "../../features/time-frames-selection/time-frames-selection.module";
 import { CustomLottieModule } from "../../features/lottie/custom-lottie.module";
 import { SearchResultCardModule } from "../../features/search-result-card/search-result-card.module";
 import { GraphQLModule } from "../../graphql.module";
 import { UpdateGroupGuard } from "../../guards/update-group.guard";
 import { ViewGroupGuard } from "../../guards/view-group.guard";
-import { DetailedReadingModule } from "../../pipes/detailed-reading/detailed-reading.module";
-import { GroupReadSegmentsToBooksModule } from "../../pipes/group-read-segments-to-books/group-read-segments-to-books.module";
+import { DetailedGroupModule } from "../../pipes/detailed-group/detailed-group.module";
+import { GroupTimeFramesToShiftsModule } from "../../pipes/group-time-frames-to-shifts/group-time-frames-to-shifts.module";
 import { HighlightInArrayModule } from "../../pipes/highlight-in-array/highlight-in-array.module";
 import { IsExpiredModule } from "../../pipes/is-expired/is-expired.module";
 import { KeyByLanguageModule } from "../../pipes/key-by-language/key-by-language.module";
@@ -70,18 +70,18 @@ import { groupsFeatureKey, groupsStateReducer } from "./reducer/group.reducer";
     KeyByLanguageModule,
     MatNativeDateModule,
     HoverDirectiveModule,
-    DetailedReadingModule,
+    DetailedGroupModule,
     SearchResultCardModule,
     HighlightInArrayModule,
     ReactiveComponentModule,
     LanguageDirectionModule,
     MatProgressSpinnerModule,
-    ReadSegmentsSelectionModule,
+    TimeFramesSelectionModule,
     EffectsModule.forFeature([GroupEffects]),
     StoreModule.forFeature(groupsFeatureKey, groupsStateReducer),
     RouterModule.forChild([
       {
-        path: "reading",
+        path: "group",
         children: [
           {
             path: "create",
@@ -104,7 +104,7 @@ import { groupsFeatureKey, groupsStateReducer } from "./reducer/group.reducer";
         ],
       },
     ]),
-    GroupReadSegmentsToBooksModule,
+    GroupTimeFramesToShiftsModule,
     ShiftCardModule,
     FormControlTrimDirectiveModule,
   ],

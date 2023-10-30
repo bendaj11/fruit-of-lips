@@ -15,7 +15,7 @@ export class AvailableTimeFramesPipe implements PipeTransform {
 
     return timeFrames.filter(
       (timeFrame) =>
-        timeFrame?.selectionCount !== minReadSegmentByCount.selectionCount
+        timeFrame?.selectionCount === minReadSegmentByCount.selectionCount
     );
   }
 }

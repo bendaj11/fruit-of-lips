@@ -40,11 +40,11 @@
         "title": {
           "label": "Group Title",
           "hint": "Give a title to your group so other people can find it without the link",
-          "requiredError": "Reading Title must be provided",
-          "maxLengthError": "Reading Title can contain only up to 50 characters"
+          "requiredError": "Group title must be provided",
+          "maxLengthError": "Group title can contain only up to 50 characters"
         },
         "expirationDate": {
-          "label": "Reading Expiration Date",
+          "label": "Group Expiration Date",
           "hint": "You can give an expiration date to your group. Defaults to 30 days",
           "invalidDateError": "Expiration Date must be bigger than today",
           "invalidDateFormatError": "Expiration Date must be in date format"
@@ -67,13 +67,13 @@
     "view": {
       "title": "JOIN",
       "summery": {
-        "title": "Reading summery",
+        "title": "Group Summery",
         "description": "See all who's taking part in this group, currently available segments and books, all with live updates. Look for a blinking dot indicating the book currently has available segments"
       },
       "joinButtonLabel": "I want to join",
       "select": {
         "title": "Choose Segments For Current Book",
-        "description": "Select a time frame by clicking on any time frame box you wish to choose, click again to undo selection. Once done, click on the done button below",
+        "description": "Select a time frame by clicking on any time frame box you wish to select, click again to undo selection. Fell Free to select as many time frames as you wish. Once done, click on the done button below",
         "hint": "In case you don't see the time frame you wish to select, it has already been selected by someone else for this book, please wait for another shift to be opened and try again",
         "backButtonLabel": "Back",
         "nameField": {

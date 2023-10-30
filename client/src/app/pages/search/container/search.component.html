@@ -16,8 +16,7 @@
 
         <ng-container
                 *ngIf="groupsData.groupsInitialFetchStatus === 'DONE' && groupsData.groups.length > 0">
-            <ng-container *ngrxLet="[groupsData.groups | filterBy: searchInput.value:['title','designations']] as
-      filteredGroups">
+            <ng-container *ngrxLet="[groupsData.groups | filterBy: searchInput.value:['title','designations']] as filteredGroups">
                 <ng-container *ngIf="filteredGroups.length > 0">
                     <search-result-card class="full-width" *ngFor="let group of filteredGroups"
                                         [detailedGroup]="group | detailedGroup" [searchValue]="searchInput.value">

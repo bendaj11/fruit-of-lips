@@ -9,8 +9,8 @@ import {
 enum GroupsActions {
   SAVE_GROUPS = "[ Group ] Save groups",
   REMOVE_GROUPS = "[ Group ] Remove groups",
-  CREATE_NEW_READING = "[ Group ] Create new group",
-  UPDATE_EXISTING_READING = "[ Group ] Update existing group",
+  CREATE_NEW_GROUP = "[ Group ] Create new group",
+  UPDATE_EXISTING_GROUP = "[ Group ] Update existing group",
   UPDATE_SELECTED_TIME_FRAMES = "[ Group ] Update selected time frames",
   FINISHED_INITIAL_GROUPS_FETCH = "[ Group ] Finished initial groups fetch",
 }
@@ -26,7 +26,7 @@ export const removeGroups = createAction(
 );
 
 export const createNewGroup = createAction(
-  GroupsActions.CREATE_NEW_READING,
+  GroupsActions.CREATE_NEW_GROUP,
   props<{ newGroup: NewGroupData }>()
 );
 
@@ -39,7 +39,7 @@ export const updateSelectedTimeFrames = createAction(
 );
 
 export const updateExistingGroup = createAction(
-  GroupsActions.UPDATE_EXISTING_READING,
+  GroupsActions.UPDATE_EXISTING_GROUP,
   props<{
     groupAdminId: string;
     updatedGroupId: string;

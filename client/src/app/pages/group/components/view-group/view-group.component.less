@@ -5,7 +5,8 @@
   z-index: 1;
   position: sticky;
   position: -webkit-sticky;
-  padding: 20px 40px 40px;
+  padding: 30px 40px;
+  background: @bright-primary-translucent-color;
   background: rgba(245 245 247, .72);
   backdrop-filter: saturate(180%) blur(15px);
 
@@ -29,23 +30,8 @@
 }
 
 .component-wrapper {
-  .progress-percentage {
-    margin: 60px 0;
-    font-size: calc(@text-font-size + 10px);
-
-    mat-progress-spinner {
-      position: absolute;
-      z-index: 2;
-
-      &.background-spinner {
-        z-index: 1;
-        opacity: .2;
-      }
-    }
-  }
-
   .group-description {
-    gap: 40px 0;
+    gap: 40px;
     transition: .2s;
     margin: 40px 0 !important;
 
@@ -59,6 +45,11 @@
     }
 
     .group-setting {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      font-size: @text-font-size;
+
       i {
         margin: 0 10px;
         color: @text-color;
@@ -76,13 +67,19 @@
         }
       }
 
-      display: flex;
-      flex-direction: column;
-      font-size: @text-font-size;
-
       .label {
         font-weight: bold;
         color: @primary-color;
+      }
+
+      &.designations {
+        .names {
+          display: flex;
+          overflow: auto;
+          max-height: 100px;
+          align-items: center;
+          flex-direction: column;
+        }
       }
     }
   }

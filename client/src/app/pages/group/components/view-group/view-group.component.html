@@ -19,15 +19,14 @@
 
     <div class="component-wrapper flex flex-col" langDirection>
         <ng-container *ngIf="!showAvailableTimeFrameSelection">
-            <div fxLayout="row wrap" fxLayoutAlign="space-between strech" class="group-description flex-center">
-                <mat-card class="group-setting" fxFlex.xs="100" fxFlex.gt-xs="47" fxFlex.gt-sm="32">
+            <div fxLayout="row wrap" fxLayoutAlign="center strech" class="group-description flex-center">
+                <mat-card class="group-setting designations" fxFlex.xs="100" fxFlex.gt-xs="45" fxFlex.gt-sm="30">
                     <i class="bi bi-file-person-fill"></i>
                     <span class="label">{{'system.designationsLabel' | translate}}</span>
 
-                    <ng-container *ngIf="detailedGroup.group.designations.length > 0 else noDesignations">
-                        <span *ngFor="let designation of detailedGroup.group.designations">{{designation}}
-                            <br></span>
-                    </ng-container>
+                    <div *ngIf="detailedGroup.group.designations.length > 0 else noDesignations" class="names">
+                        <span *ngFor="let designation of detailedGroup.group.designations">{{designation}}</span>
+                    </div>
 
                     <ng-template #noDesignations>
                         <span>{{'system.noDesignationsMessage' | translate}}</span>
@@ -49,9 +48,25 @@
                     </span>
                     <span>{{detailedGroup.group.expirationDate | date:'dd/MM/yyyy HH:mm'}}</span>
                 </mat-card>
+
+                <mat-card class="group-setting" fxFlex.xs="100" fxFlex.gt-xs="47" fxFlex.gt-sm="32">
+                    <i class="bi bi-clock-history"></i>
+                    <span class="label">
+                        {{ 'system.totalHoursCountLabel' | translate }}
+                    </span>
+                    <span>{{ detailedGroup.totalSelectedHours }}</span>
+                </mat-card>
+
+                <mat-card class="group-setting" fxFlex.xs="100" fxFlex.gt-xs="47" fxFlex.gt-sm="32">
+                    <i class="bi bi-person-arms-up"></i>
+                    <span class="label">
+                        {{ 'system.totalParticipantsCountLabel' | translate }}
+                    </span>
+                    <span>{{ detailedGroup.totalParticipantsCount }}</span>
+                </mat-card>
             </div>
 
-            <ng-container *ngIf="values(detailedGroup.group.selectedTimeFrames) | groupToShifts; let shifts">
+            <ng-container *ngIf="detailedGroup.group.selectedTimeFrames | timeFramesToShifts; let shifts">
                 <div fxLayout="row wrap" fxLayoutAlign="center strech" class="group-status flex-center"
                      *ngIf="shifts.length > 0">
                     <div class="text-section" fxFlex="100">
@@ -60,9 +75,9 @@
                     </div>
 
                     <shift-card *ngFor="let shift of shifts; let index = index; trackBy: trackByIndex"
-                               [shift]="shift"
-                               [title]="('system.shift' | translate) + ' ' + (index + 1)"
-                               fxFlex.xs="100" fxFlex.gt-xs="47" fxFlex.gt-sm="32">
+                                [shift]="shift"
+                                [title]="('system.shift' | translate) + ' ' + (index + 1)"
+                                fxFlex.xs="100" fxFlex.gt-xs="47" fxFlex.gt-sm="32">
 
                     </shift-card>
                 </div>

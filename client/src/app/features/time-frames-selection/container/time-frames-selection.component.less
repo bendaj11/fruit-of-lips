@@ -1,12 +1,12 @@
 @import '/src/assets/styles/_variables';
 
-.read-segments-selection-container, .read-segments-cards, .time-frames-selection-buttons {
+.time-frames-selection-container, .time-frame-cards, .time-frames-selection-buttons {
   gap: 35px;
 }
 
-.read-segments-selection-container {
-  .read-segments-cards {
-    .read-segment-card {
+.time-frames-selection-container {
+  .time-frame-cards {
+    .time-frame-card {
       cursor: pointer;
       transition: .2s;
       text-align: center;
@@ -15,6 +15,12 @@
       p {
         font-size: calc(@text-font-size + 5px);
         font-weight: bolder;
+      }
+
+      .time-of-day-icon {
+        left: 20px;
+        position: absolute;
+        color: @bright-primary-color2;
       }
 
       &.selected {
@@ -55,6 +61,7 @@
     padding: 10px;
     color: #FFFFFF;
     transition: .2s;
+    border-radius: 10px;
     font-size: @text-font-size;
     background-color: @primary-color;
 

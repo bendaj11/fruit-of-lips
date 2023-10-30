@@ -7,7 +7,6 @@ import {
 import { Store } from "@ngrx/store";
 import { combineLatest, map } from "rxjs";
 import {
-  selectAllGroups,
   selectGroupsInitialFetchStatus,
   selectGroupsSortedByExpirationDate,
 } from "../../group/reducer/group.reducer";
@@ -30,9 +29,6 @@ export class SearchComponent {
       groupsInitialFetchStatus,
     }))
   );
-
-  allGroups$ = this.store.select(selectAllGroups);
-  groupsInitialFetchStatus$ = this.store.select(selectGroupsInitialFetchStatus);
 
   constructor(private readonly store: Store) {}
 }

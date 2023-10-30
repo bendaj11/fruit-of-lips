@@ -1,18 +1,18 @@
 @import '/src/assets/styles/_variables';
 
 mat-card {
-  height: 100%;
   padding: 0;
+  height: 100%;
 
   &.available {
-    animation: pulse-animation 1s infinite;
+    animation: pulse-animation 1.5s infinite;
 
     @keyframes pulse-animation {
-      0% {
-        box-shadow: 0 0 0 0 @bright-primary-translucent-color
+      from {
+        box-shadow: 0 0 0 0 @bright-primary-color2;
       }
-      100% {
-        box-shadow: 0 0 0 20px rgba(0, 0, 0, 0);
+      to {
+        box-shadow: 0 0 0 30px transparent;
       }
     }
   }
@@ -35,7 +35,6 @@ mat-card {
   mat-card-content {
     overflow: auto;
     max-height: 550px;
-    padding-bottom: 8px;
 
     .named-time-frame {
       padding: 10px 16px;
@@ -59,7 +58,7 @@ mat-card {
 
       .username {
         &.available {
-          font-weight: bolder;
+          font-weight: 600;
           color: @primary-color;
         }
       }
@@ -76,5 +75,6 @@ mat-card {
     width: 100%;
     height: 100%;
     position: absolute;
+    pointer-events: none;
   }
 }

@@ -34,26 +34,29 @@ export class TimeFramesSelectionComponent {
   arrayFrom = Array.from;
   selectionStage: SelectionStage = "SELECTION";
 
-  selectedTimeFramesIds = new Set<number>();
-
-  constructor(private readonly store: Store) {}
+  selectedTimeFrames: CountedTimeFrame[] = [];
 
   toggleTimeFrameSelection(timeFrame: CountedTimeFrame) {
     if (this.isTimeFrameSelected(timeFrame)) {
-      this.selectedTimeFramesIds.delete(timeFrame.startTime);
+      this.selectedTimeFrames.splice(
+        this.selectedTimeFrames.indexOf(timeFrame),
+        1
+      );
     } else {
-      this.selectedTimeFramesIds.add(timeFrame.startTime);
+      this.selectedTimeFrames.push(timeFrame);
     }
   }
 
   isTimeFrameSelected(timeFrame: CountedTimeFrame) {
-    return this.selectedTimeFramesIds.has(timeFrame.startTime);
+    return this.selectedTimeFrames.indexOf(timeFrame) !== -1;
   }
 
   approveTimeFramesSelection() {
     this.timeFramesSelected.emit({
       participantName: this.username.substr(0, 20),
-      selectedTimeFramesIds: [...this.selectedTimeFramesIds],
+      selectedTimeFramesIds: this.selectedTimeFrames.map(
+        (timeFrame) => timeFrame.startTime
+      ),
     });
   }
 }

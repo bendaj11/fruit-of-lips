@@ -38,7 +38,7 @@
             </a>
 
             <a class="flex flex-center flex-col animate__animated animate__fadeIn"
-               [style.animationDelay.s]=".3"
+               [style.animation-delay.s]=".3"
                fxFlex.lt-md="50"
                fxFlex.gt-sm="25"
                routerLink="/search"
@@ -47,24 +47,14 @@
                 <span>{{ 'search.title' | translate }}</span>
             </a>
 
-            <!--<a class="flex flex-center flex-col animate__animated animate__fadeIn"
-               [style.animationDelay.s]=".3"
-               fxFlex.lt-md="50"
-               fxFlex.gt-sm="25"
-               routerLink="/read"
-               routerLinkActive="active">
-              <i class="bi bi-eyeglasses"></i>
-              <span>{{ 'read.title' | translate }}</span>
-            </a>-->
-
             <a class="flex flex-center flex-col animate__animated animate__fadeIn"
-               [style.animationDelay.s]=".3"
+               [style.animation-delay]=".3"
                fxFlex.lt-md="50"
                fxFlex.gt-sm="25"
-               routerLink="/reading/create"
+               routerLink="/group/create"
                routerLinkActive="active">
                 <i class="bi bi-bookmark-plus"></i>
-                <span>{{ 'reading.create.title' | translate }}</span>
+                <span>{{ 'group.create.title' | translate }}</span>
             </a>
 
         </div>

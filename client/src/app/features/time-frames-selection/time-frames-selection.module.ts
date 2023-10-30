@@ -39,4 +39,4 @@ import { TimeFramesSelectionComponent } from "./container/time-frames-selection.
     StyleByLanguageDirectiveModule,
   ],
 })
-export class ReadSegmentsSelectionModule {}
+export class TimeFramesSelectionModule {}

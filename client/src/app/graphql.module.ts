@@ -5,7 +5,7 @@ import { getMainDefinition } from "@apollo/client/utilities";
 import { APOLLO_OPTIONS, ApolloModule } from "apollo-angular";
 import { HttpLink } from "apollo-angular/http";
 
-const httpUri = "https://fruit-of-lips-hasura.onrender.com/v1/graphl";
+const httpUri = "https://fruit-of-lips-hasura.onrender.com/v1/graphql";
 const wsUri = "wss://fruit-of-lips-hasura.onrender.com/v1/graphql";
 
 export function createApollo(httpLink: HttpLink): ApolloClientOptions<any> {
